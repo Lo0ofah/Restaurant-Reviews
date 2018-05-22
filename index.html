@@ -4,6 +4,7 @@
 <head>
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
   <link rel="stylesheet" href="css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Restaurant Reviews</title>
 </head>
 
@@ -31,7 +32,14 @@
       <ul id="restaurants-list" tabindex="0" aria-label="restaurants list"></ul>
     </section>
   </main>
-
+  <!-- Register service Worker-->
+  <script>
+  if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw/sw.js').then(function(){
+  console.log('Service Worker Registered');
+  });
+  }
+  </script>
   <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAL1FvCDoe6-jmdlGkTrz7ZRsGZqdRJV94&libraries=places&callback=initMap"></script>
