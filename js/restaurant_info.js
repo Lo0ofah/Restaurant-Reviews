@@ -59,6 +59,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   image.className = 'restaurant-img'
   image.alt =  "restaurant "+restaurant.name+" image";
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+    image.tabIndex = 0;
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
@@ -78,7 +79,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
   const hours = document.getElementById('restaurant-hours');
   for (let key in operatingHours) {
     const row = document.createElement('tr');
-    row.tabIndex = 0;
+    row.tabIndex = -1;
     const day = document.createElement('td');
     day.innerHTML = key;
     row.appendChild(day);
@@ -98,13 +99,13 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
   const title = document.createElement('h2');
   title.innerHTML = 'Reviews';
-  title.tabIndex = 0;
+  title.tabIndex = -1;
   container.appendChild(title);
 
   if (!reviews) {
     const noReviews = document.createElement('p');
     noReviews.innerHTML = 'No reviews yet!';
-    noReviews.tabIndex = 0;
+    noReviews.tabIndex = -1;
     container.appendChild(noReviews);
     return;
   }
@@ -120,26 +121,22 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  */
 createReviewHTML = (review) => {
   const li = document.createElement('li');
-  li.tabIndex = 0;
+  li.tabIndex = -1;
   li.setAttribute("aria-label","review list item");
   const name = document.createElement('p');
   name.innerHTML = review.name;
-  name.tabIndex = 0;
   li.appendChild(name);
 
   const date = document.createElement('p');
   date.innerHTML = review.date;
-  date.tabIndex = 0;;
   li.appendChild(date);
 
   const rating = document.createElement('p');
   rating.innerHTML = `Rating: ${review.rating}`;
-  rating.tabIndex = 0;
   li.appendChild(rating);
 
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
-  comments.tabIndex = 0;
   li.appendChild(comments);
 
   return li;

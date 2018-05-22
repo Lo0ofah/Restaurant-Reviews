@@ -25,7 +25,6 @@ self.addEventListener('install', function(event){
       ]);
     })
   );
-    console.log("install");
 });
 
 self.addEventListener('activate', function(event) {
@@ -41,7 +40,6 @@ self.addEventListener('activate', function(event) {
       );
     })
   );
-    console.log("activate");
 });
 
 self.addEventListener("fetch", function(event){
@@ -51,5 +49,4 @@ self.addEventListener("fetch", function(event){
     return response || fetch(event.request);
   })
 );
-  console.log("fetch");
 });
